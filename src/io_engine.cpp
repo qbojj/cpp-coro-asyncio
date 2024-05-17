@@ -16,6 +16,7 @@ io_engine::~io_engine() {
 
   while (!operations.empty()) {
     auto *op = operations.back();
+    operations.pop_back();
     op->exception = eptr;
     op->handle.resume();
   }
